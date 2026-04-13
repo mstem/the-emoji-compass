@@ -1,0 +1,122 @@
+import React, { useRef, useEffect } from 'react'
+import { gsap } from 'gsap'
+import { Draggable } from 'gsap/Draggable'
+import { useStore } from '../store'
+import { random, getEmojiPosition } from '../utils'
+import { autoRotateNeedle } from '../scripts'
+import './CompassNeedle.css'
+
+gsap.registerPlugin(Draggable)
+
+export default function CompassNeedle ({ id, type }) {
+  const symbols = useStore((s) => s.symbols)
+  const activeNeedle = useStore((s) => s.activeNeedle)
+  const addRequestEmoji = useStore((s) => s.addRequestEmoji)
+  const updateNeedlePosition = useStore((s) => s.updateNeedlePosition)
+  const setActiveNeedle = useStore((s) => s.setActiveNeedle)
+
+  const el = useRef(null)
+  const draggableRef = useRef(null)
+
+  // Keep latest store actions in refs so the Draggable closure always has current values
+  const symbolsRef = useRef(symbols)
+  const addRequestEmojiRef = useRef(addRequestEmoji)
+  const updateNeedlePositionRef = useRef(updateNeedlePosition)
+  const setActiveNeedleRef = useRef(setActiveNeedle)
+  useEffect(() => { symbolsRef.current = symbols }, [symbols])
+  useEffect(() => { addRequestEmojiRef.current = addRequestEmoji }, [addRequestEmoji])
+  useEffect(() => { updateNeedlePositionRef.current = updateNeedlePosition }, [updateNeedlePosition])
+  useEffect(() => { setActiveNeedleRef.current = setActiveNeedle }, [setActiveNeedle])
+
+  const setElementSize = () => {
+    const ring = document.getElementById('ring')
+    if (!ring || !el.current) return
+    const circleSize = ring.getBoundingClientRect().width
+    const ratio = type === 'response' ? 0.425 : 0.355
+    el.current.style.width = ratio * circleSize + 'px'
+  }
+
+  const enable = () => {
+    if (!el.current || !draggableRef.current) return
+    el.current.classList.add('needle-active')
+    gsap.set(el.current, { zIndex: 1 })
+    draggableRef.current.enable()
+  }
+
+  const disable = () => {
+    if (!el.current || !draggableRef.current) return
+    el.current.classList.remove('needle-active')
+    gsap.set(el.current, { zIndex: 0 })
+    draggableRef.current.disable()
+    el.current.style.userSelect = 'none'
+    el.current.style.touchAction = 'none'
+  }
+
+  // Mount: set up GSAP Draggable
+  useEffect(() => {
+    setElementSize()
+    window.addEventListener('resize', setElementSize)
+
+    gsap.set(el.current, {
+      transformOrigin: '2.0vmin',
+      rotation: random() * 360,
+    })
+
+    const [d] = Draggable.create(el.current, {
+      type: 'rotation',
+      sticky: true,
+      throwProps: true,
+      snap: {
+        rotation: (value) => {
+          const increment = 360 / symbolsRef.current.length
+          return Math.round(value / increment) * increment
+        },
+      },
+      onDragStart: () => {
+        window.dispatchEvent(new CustomEvent('compass:needle_drag_start'))
+      },
+      onDrag: function () {
+        updateNeedlePositionRef.current(this.rotation)
+      },
+      onDragEnd: function () {
+        updateNeedlePositionRef.current(this.rotation)
+        const position = getEmojiPosition(this.rotation, symbolsRef.current)
+        addRequestEmojiRef.current(symbolsRef.current[position])
+        this.disable()
+        el.current.classList.remove('needle-active')
+        gsap.set(el.current, { zIndex: 0 })
+        el.current.style.userSelect = 'none'
+        el.current.style.touchAction = 'none'
+        setActiveNeedleRef.current(id + 1)
+      },
+      onThrowUpdate: function () {
+        updateNeedlePositionRef.current(this.rotation)
+      },
+    })
+
+    draggableRef.current = d
+
+    return () => {
+      window.removeEventListener('resize', setElementSize)
+      d.kill()
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  // Enable or disable based on which needle is active
+  useEffect(() => {
+    if (!draggableRef.current) return
+    if (activeNeedle === id) {
+      if (type === 'response') {
+        autoRotateNeedle({ el, draggable: [draggableRef.current] })
+      } else {
+        enable()
+      }
+    } else {
+      disable()
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeNeedle])
+
+  return <div className={`needle needle-${type}`} ref={el} />
+}

@@ -2,8 +2,7 @@ import { gsap } from 'gsap'
 
 import symbols from './symbols.json'
 import { random, getUniqueRandomIntegers, getRotation } from './utils'
-import store from './store'
-import { addResponseEmoji, showAnswerScreen, updateNeedlePosition } from './store/actions/app'
+import { useStore } from './store'
 
 // adjustable values
 const DELAY_BETWEEN_PICKS = 10
@@ -19,7 +18,7 @@ export function init () {
 }
 
 function onDialPositionUpdate (rotation) {
-  store.dispatch(updateNeedlePosition(rotation))
+  useStore.getState().updateNeedlePosition(rotation)
 }
 
 function rotateDialStep (el, draggable, frame, totalFrames, rotateTo, overshoot, rotateDirection, easing, resolve) {
@@ -34,7 +33,6 @@ function rotateDialStep (el, draggable, frame, totalFrames, rotateTo, overshoot,
   }
 
   if (rotated) {
-    // Tell the Draggable to calibrate/synchronize/read the current value
     draggable.update()
     onDialPositionUpdate(draggable.rotation)
 
@@ -42,29 +40,24 @@ function rotateDialStep (el, draggable, frame, totalFrames, rotateTo, overshoot,
       rotateDialStep(el, draggable, frame + 1, totalFrames, rotateTo, overshoot, rotateDirection, easing, resolve)
     })
   } else if (overshoot !== 0) {
-    // Tell the Draggable to calibrate/synchronize/read the current value
     dialAnimation = window.requestAnimationFrame(function (timestamp) {
-      rotateDialStep(el, draggable, 0, 10, rotateTo, Math.trunc(overshoot / 2), rotateDirection * -1, (t) => t * t , resolve)
+      rotateDialStep(el, draggable, 0, 10, rotateTo, Math.trunc(overshoot / 2), rotateDirection * -1, (t) => t * t, resolve)
     })
   } else {
     onDialPositionUpdate(draggable.rotation)
-
     resolve()
   }
 }
 
 function rotatePromise (el, draggable, rotateTo) {
-  // rotateDirection = 1 => clockwise
-  // rotateDirection = -1 => counterclockwise
   const rotateDirection = Math.round(random()) ? 1 : -1
   const rotateQuantity = Math.ceil(random()) // a number between 1 and 2 inclusive
   const overshoot = 5 + Math.ceil(random() * 5) // Number of degrees to overshoot
 
-  // rotation is cumulative so calculate actual ending degrees
   let circs = Math.floor(draggable.rotation / 360) + rotateQuantity * rotateDirection
   const rotateToActual = circs * 360 + rotateTo
   const rotateToOvershoot = rotateToActual + overshoot * rotateDirection
-  const duration = Math.abs(draggable.rotation - rotateToOvershoot) / 200 * 60 // 200 degrees per second on average
+  const duration = Math.abs(draggable.rotation - rotateToOvershoot) / 200 * 60
 
   return new Promise(function (resolve) {
     let easing = (t) => (t < rotateToActual / rotateToOvershoot) ? (16 * t * t * t * t * t) : (1 + 16 * (--t) * t * t * t * t)
@@ -74,11 +67,6 @@ function rotatePromise (el, draggable, rotateTo) {
   })
 }
 
-/**
- * Wrap setTimeout so that it works like a promise
- *
- * @param {Number} delay - in milliseconds
- */
 function wait (delay) {
   return new Promise(function (resolve) {
     window.setTimeout(resolve, delay)
@@ -91,8 +79,6 @@ export function autoRotateNeedle (dial) {
   const draggable = dial.draggable[0]
 
   el.classList.add('needle-active')
-
-  // Make sure the dial picks up its initial position by calling update()
   draggable.update()
 
   const numberOfSymbols = symbols.length
@@ -100,10 +86,11 @@ export function autoRotateNeedle (dial) {
   const responseEmojis = randomNumbers.map((num) => symbols[num])
 
   const rotateTo = getRotation(randomNumbers[0], numberOfSymbols)
+  const { addResponseEmoji, showAnswerScreen } = useStore.getState()
 
   rotatePromise(el, draggable, rotateTo)
     .then(function () {
-      store.dispatch(addResponseEmoji(responseEmojis[0]))
+      addResponseEmoji(responseEmojis[0])
       return wait(DELAY_BETWEEN_PICKS)
     })
     .then(function () {
@@ -111,7 +98,7 @@ export function autoRotateNeedle (dial) {
       return rotatePromise(el, draggable, rotateTo)
     })
     .then(function () {
-      store.dispatch(addResponseEmoji(responseEmojis[1]))
+      addResponseEmoji(responseEmojis[1])
       return wait(DELAY_BETWEEN_PICKS)
     })
     .then(function () {
@@ -119,10 +106,10 @@ export function autoRotateNeedle (dial) {
       return rotatePromise(el, draggable, rotateTo)
     })
     .then(function () {
-      store.dispatch(addResponseEmoji(responseEmojis[2]))
+      addResponseEmoji(responseEmojis[2])
       return wait(DELAY_AFTER_ALL_PICKS)
     })
     .then(function () {
-      store.dispatch(showAnswerScreen())
+      showAnswerScreen()
     })
 }
