@@ -150,12 +150,12 @@ const Arc = (props) => (
   </svg>
 )
 
-Arc.prototype.propTypes = {
+Arc.propTypes = {
   active: PropTypes.number,
   handleSelect: PropTypes.func
 }
 
-Arc.prototype.defaultProps = {
+Arc.defaultProps = {
   handleSelect: () => {}
 }
 

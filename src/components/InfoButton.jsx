@@ -7,7 +7,7 @@ const InfoButton = (props) => (
   <Button type="info" title="Info" className="info-button" onClick={props.handler} />
 )
 
-InfoButton.prototype.propTypes = {
+InfoButton.propTypes = {
   handler: PropTypes.func.isRequired,
 }
 
