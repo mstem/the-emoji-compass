@@ -1,193 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="title" content="The Emoji Compass">
-  <meta name="description" content="It's like a magic 8-ball for people who read His Dark Materials.">
-
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://badideafactory.github.io/the-emoji-compass/">
-  <meta property="og:title" content="The Emoji Compass">
-  <meta property="og:description" content="It's like a magic 8-ball for people who read His Dark Materials.">
-  <meta property="og:image" content="https://badideafactory.github.io/the-emoji-compass/preview.png">
-
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://badideafactory.github.io/the-emoji-compass/">
-  <meta property="twitter:title" content="The Emoji Compass">
-  <meta property="twitter:description" content="It's like a magic 8-ball for people who read His Dark Materials.">
-  <meta property="twitter:image" content="https://badideafactory.github.io/the-emoji-compass/preview.png">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  
-  <link rel="manifest" href="manifest.json">
-  <link rel="shortcut icon" href="favicon.ico">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-
-  <title>The Emoji Compass</title>
-
-  <link href="https://fonts.googleapis.com/css?family=Gentium+Book+Basic:400,400i,700" rel="stylesheet">
-
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8PCG64KXZ3"></script>
-  <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-8PCG64KXZ3'); </script> 
-
-  <style>
-    body {
-      margin: 0;
-      background-color: rgb(234, 18, 139);
-      overflow-x: hidden;
-    }
-
-    .screen-viewer {
-      text-align: center;
-      display: flex;
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100vw;
-      min-height: 100vh;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .mobile-skin {
-      position: relative;
-      width: 402px;
-      height: 836px;
-      margin: 30px auto;
-      background: url('./images/htcOne-portrait.png') no-repeat;
-    }
-
-    .mobile-skin::after {
-      content: '';
-      display: block;
-      z-index: -1;
-      opacity: .5;
-      background: url('./images/htcOne-portrait-shadow.png') no-repeat;
-      width: 436px;
-      height: 870px;
-      position: absolute;
-      top: -17px;
-      left: -17px;
-    }
-
-    .mobile-status-bar {
-      background-image: url('./images/htcOne-portrait-bar-light@2x.png');
-      background-size: 360px 24px;
-      position: absolute;
-      top: 82px;
-      left: 21px;
-      width: 360px;
-      height: 24px;
-      background-color: rgba(0, 0, 0, 0.5);
-      z-index: 100;
-      cursor: url('./images/mobile-cursor.png') 39 39,auto;
-    }
-
-    .mobile-viewport {
-      overflow: hidden;
-      display: block;
-      position: absolute;
-      left: 21px;
-      top: 82px;
-      width: 360px;
-      height: 640px;
-      cursor: url('./images/mobile-cursor.png') 39 39,auto;
-    }
-
-    iframe {
-      border: 0;
-      width: 100%;
-      height: 100%;
-    }
-
-    h1 {
-      position: absolute;
-      top: 3px;
-      left: 20px;
-      color: white;
-      font-family: 'Gentium Book Basic', serif;
-    }
-
-    h1 > span:first-child {
-      position: absolute;
-      top: 9px;
-      left: 34px;
-      font-size: 0.65em;
-      font-style: italic;
-      font-weight: normal;
-    }
-
-    h1 > span:nth-child(2) {
-      position: absolute;
-      top: 0;
-      left: 63px;
-    }
-
-    h1 > span:last-child {
-      position: absolute;
-      top: 21px;
-      left: 0;
-      font-weight: normal;
-    }
-
-    @media (max-width: 500px) {
-      iframe {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 100;
-      }
-    }
-
-    header {
-      position: fixed;
-      top: 0;
-    }
-
-    .app-store-button {
-      position: absolute;
-      top: 100px;
-      left: 20px;
-    }
-
-    footer {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 100px;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <h1><span>the</span> <span>emoji</span> <span>compass</span></h1>
-    <div class="app-store-button">
-      <a href="https://apps.apple.com/us/app/the-emoji-compass/id1440200804" rel="noreferer noopener">
-        <img src="images/app-store.svg" alt="Download on the Apple App Store" />
-      </a>  
-    </div>
-  </header>
-  <footer>
-    <a href="https://biffud.com/"><img src="bif_logo.svg" alt="Bad Idea Factory"></a>
-  </footer>
-  <div class="screen-viewer">
-    <div class="mobile-skin">
-      <div class="mobile-status-bar"></div>
-      <div class="mobile-viewport">
-        <iframe src="https://the-emoji-compass.netlify.app/"></iframe>
-      </div>
-    </div>
-  </div>
-  <script src="https://unpkg.com/@biffud/random-bg-color@1.0.0/src/index.js"></script>
-  <script>
-    BIFFUD.setRandomBgColor()
-  </script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="theme-color" content="#cf9644" />
+    <link rel="manifest" href="/the-emoji-compass/manifest.json" />
+    <link rel="shortcut icon" href="/the-emoji-compass/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/the-emoji-compass/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/the-emoji-compass/favicon-16x16.png" />
+    <title>The Emoji Compass</title>
+    <link rel="stylesheet" type="text/css" href="/the-emoji-compass/css/index.css" />
+    <script type="module" crossorigin src="/the-emoji-compass/assets/index-Bv_T_LMF.js"></script>
+    <link rel="stylesheet" crossorigin href="/the-emoji-compass/assets/index-DN7XjQJT.css">
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  </body>
 </html>
