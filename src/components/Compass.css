@@ -1,12 +1,8 @@
 .compass-container {
-  /* display: flex;
-  position: relative;
-  height: 106vmin;
-  width: 106vmin;
-  flex: 3; */
   position: absolute;
-  height: 106vmin;
-  width: 106vmin;
-  left: -3vmin;
-  top: -1vmin;
+  height: min(96vmin, calc(100vh - 90px - 2rem), calc(100vw - 2rem));
+  width: min(96vmin, calc(100vh - 90px - 2rem), calc(100vw - 2rem));
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }

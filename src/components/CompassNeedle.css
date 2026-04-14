@@ -23,6 +23,7 @@
 
 .needle-request.needle-active {
   background-image: url("../img/needle_request_active.svg");
+  animation: needle-glow 1.4s ease-in-out infinite;
 }
 
 .needle-response {
@@ -31,4 +32,16 @@
 
 .needle-response.needle-active {
   background-image: url("../img/needle_response_active.svg");
+  animation: needle-glow 1.4s ease-in-out infinite;
+}
+
+@keyframes needle-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 5px rgba(35, 12, 32, 0.25));
+  }
+  50% {
+    filter:
+      drop-shadow(0 0 8px rgba(220, 175, 60, 1))
+      drop-shadow(0 0 20px rgba(220, 175, 60, 0.65));
+  }
 }

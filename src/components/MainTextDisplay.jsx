@@ -18,6 +18,14 @@ export default function MainTextDisplay () {
   const activeNeedle = useStore((s) => s.activeNeedle)
   const responseEmojis = useStore((s) => s.responseEmojis)
 
+  const [isFirstVisit] = useState(() => {
+    if (!localStorage.getItem('emoji-compass-visited')) {
+      localStorage.setItem('emoji-compass-visited', '1')
+      return true
+    }
+    return false
+  })
+
   const [textDisplay, setTextDisplay] = useState(TEXT_DISPLAY.INSTRUCTION1)
 
   // Mirror getDerivedStateFromProps logic: update textDisplay based on store state
@@ -70,6 +78,17 @@ export default function MainTextDisplay () {
         )
       case TEXT_DISPLAY.INSTRUCTION1:
       default:
+        if (isFirstVisit) {
+          return (
+            <div className="text-box instruction-text instruction-text-howto">
+              <p>
+                The Emoji Compass will tell you the answer to any question you hold in your heart.
+                Rotate the three hands to pick the symbols that best represent your query.
+                The fourth needle will then spin and reveal your answer.
+              </p>
+            </div>
+          )
+        }
         return (
           <div className="text-box instruction-text">
             <p>Ask a question by choosing three symbols.</p>

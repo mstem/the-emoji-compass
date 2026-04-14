@@ -46,6 +46,7 @@ export default function CompassNeedle ({ id, type }) {
   const disable = () => {
     if (!el.current || !draggableRef.current) return
     el.current.classList.remove('needle-active')
+    el.current.style.animation = ''
     gsap.set(el.current, { zIndex: 0 })
     draggableRef.current.disable()
     el.current.style.userSelect = 'none'
@@ -73,6 +74,7 @@ export default function CompassNeedle ({ id, type }) {
         },
       },
       onDragStart: () => {
+        el.current.style.animation = 'none'
         window.dispatchEvent(new CustomEvent('compass:needle_drag_start'))
       },
       onDrag: function () {

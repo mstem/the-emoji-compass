@@ -4,8 +4,8 @@
   flex-direction: column;
   width: 100%;
   position: absolute;
-  top: calc(106vmin + 48px);
-  height: calc(100% - 48px - 100vmin);
+  bottom: 90px;
+  height: calc(50% - min(48vmin, calc((100vh - 90px - 2rem) / 2)) - 1rem);
 }
 
 @media (max-height: 700px) {
@@ -39,6 +39,10 @@
 
 .instruction-text p {
   margin: 0.25em 0;
+}
+
+.instruction-text-howto {
+  font-size: 1.1em;
 }
 
 .emoji-picking {

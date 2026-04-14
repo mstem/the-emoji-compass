@@ -55,6 +55,13 @@ export default function InfoOverlay ({ handler }) {
             <h2>About the project</h2>
 
             <p>
+              You can read the full ridiculous backstory of this project on{' '}
+              <a href="https://www.mattstempeck.com/portfolio/emoji-compass/" target="_blank" rel="noopener noreferrer">
+                Matt's website
+              </a>.
+            </p>
+
+            <p>
               The Emoji Compass is a production of{' '}
               <a href="https://biffud.com" target="_blank" rel="noopener noreferrer">Bad Idea Factory</a>
               , a creative collective that builds technology to make people 🤔. The app is inspired
@@ -86,23 +93,28 @@ export default function InfoOverlay ({ handler }) {
 
             <ul>
               <li>
-                <a href="https://greensock.com/gsap/" target="_blank" rel="noopener noreferrer">GSAP</a>
+                <a href="https://react.dev/" target="_blank" rel="noopener noreferrer">React</a>
+              </li>
+              <li>
+                <a href="https://zustand.docs.pmnd.rs/" target="_blank" rel="noopener noreferrer">Zustand</a>
+              </li>
+              <li>
+                <a href="https://gsap.com/" target="_blank" rel="noopener noreferrer">GSAP</a>
               </li>
               <li>
                 <a href="https://vitejs.dev/" target="_blank" rel="noopener noreferrer">Vite</a>
               </li>
               <li>
-                <a href="https://hugogiraudel.com/2013/04/02/items-on-circle/" target="_blank" rel="noopener noreferrer">
-                  Mixin to place items on a circle
-                </a>{' '}
-                by Hugo Giraudel &amp; Ana Tudor
+                <a href="https://reactcommunity.org/react-transition-group/" target="_blank" rel="noopener noreferrer">
+                  React Transition Group
+                </a>
               </li>
               <li>
                 The{' '}
                 <a href="https://fonts.google.com/specimen/Gentium+Book+Basic" target="_blank" rel="noopener noreferrer">
                   Gentium Book Basic
                 </a>{' '}
-                font, licensed under{' '}
+                font, licensed under the{' '}
                 <a href="http://scripts.sil.org/OFL" target="_blank" rel="noopener noreferrer">
                   SIL Open Font License
                 </a>
