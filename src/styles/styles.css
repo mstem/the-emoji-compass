@@ -4,15 +4,10 @@
 
 html,
 body {
-  /* Prevent overscroll on iOS / mobile */
-  position: fixed;
-  overflow: hidden;
-  width: 100vw;
-  height: 100vh;
   margin: 0;
   padding: 0;
-  top: 0;
-  left: 0;
+  width: 100%;
+  min-height: 100vh;
 }
 
 body {
@@ -38,16 +33,10 @@ body {
 
 .container {
   /* Positioning and layout */
-  /* width: 100vw;
   position: relative;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  align-items: center;
-  margin-top: 2rem; */
-  width: 100vw;
-  height: calc(100% - 90px);
-  position: absolute;
+  width: 100%;
+  min-height: calc(100vh - 90px);
+  height: auto;
   align-items: center;
 
   /* Typography */

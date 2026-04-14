@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs><style>.a{fill:#c4a660;}.b{fill:#ddc272;}</style></defs>
+  <title>refresh</title>
+  <!-- Outer circle border (beveled, matches close.svg style) -->
+  <path class="a" d="M50,0A50,50,0,1,0,100,50,50.057,50.057,0,0,0,50,0Zm0,97A47,47,0,1,1,97,50,47.054,47.054,0,0,1,50,97Z"/>
+  <path class="b" d="M50,2A48,48,0,1,0,98,50,48.054,48.054,0,0,0,50,2Zm0,93A45,45,0,1,1,95,50,45.051,45.051,0,0,1,50,93Z"/>
+  <!-- Circular arrow ring body: 260° arc from 100° to 360° clockwise -->
+  <path class="a" d="
+    M 46.18 71.67
+    A 22 22 0 1 1 72.0 50.0
+    L 65.0 50.0
+    A 15 15 0 1 0 47.4 64.77
+    Z
+  "/>
+  <!-- Arrowhead at 0° pointing clockwise (downward at right) -->
+  <polygon class="a" points="72,44 80,50 72,56"/>
+</svg>

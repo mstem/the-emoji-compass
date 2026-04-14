@@ -10,10 +10,10 @@ export default function NavButtons ({ route, showInfoOverlay }) {
 
   return (
     <div className="nav-buttons">
-      <InfoButton handler={showInfoOverlay} />
       {route === ROUTES.ANSWER && (
-        <Button type="close" title="Ask again" onClick={resetAppState} />
+        <Button type="refresh" title="Spin again" onClick={resetAppState} />
       )}
+      <InfoButton handler={showInfoOverlay} />
     </div>
   )
 }

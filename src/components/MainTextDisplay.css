@@ -1,12 +1,27 @@
+/* Mobile / portrait: text below compass */
 .text-container {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  position: relative;
+  margin: calc((100vh - 90px + var(--compass-size)) / 2 + 1rem) auto 2rem;
   width: calc(var(--compass-size) * 0.8);
-  top: calc(50% + var(--compass-size) / 2 + 1rem);
-  bottom: 0;
   display: flex;
   flex-direction: column;
+  padding-bottom: 1rem;
+}
+
+/* Desktop / landscape: text to the right of compass */
+@media (min-aspect-ratio: 4/3) and (min-height: 600px) {
+  .text-container {
+    position: absolute;
+    margin: 0;
+    left: calc(50% + var(--compass-size) / 2 + 1.5rem);
+    right: 1.5rem;
+    width: auto;
+    top: calc((100vh - 90px - var(--compass-size)) / 2 + 1rem);
+    bottom: 0;
+    padding-bottom: 2rem;
+    overflow-y: auto;
+    justify-content: center;
+  }
 }
 
 @media (max-height: 700px) {
@@ -32,7 +47,7 @@
 
 .instruction-text {
   font-size: 1.5em;
-  line-height: 1.4;
+  line-height: 1.7;
   flex-direction: column;
   text-align: justify;
 }

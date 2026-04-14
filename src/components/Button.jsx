@@ -7,6 +7,7 @@ import SHARE_ANDROID_ICON from '../img/share_android.svg'
 import SHARE_IOS_ICON from '../img/share_ios.svg'
 import CLOSE_ICON from '../img/close.svg'
 import CLOSE_ICON_LIGHT from '../img/close_light.svg'
+import REFRESH_ICON from '../img/refresh.svg'
 
 export default class Button extends Component {
   static propTypes = {
@@ -37,6 +38,8 @@ export default class Button extends Component {
         return SHARE_IOS_ICON
       case 'info':
         return INFO_ICON
+      case 'refresh':
+        return REFRESH_ICON
       default:
         return '?'
     }
