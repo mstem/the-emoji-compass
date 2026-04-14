@@ -5,7 +5,7 @@ import { random, getUniqueRandomIntegers, getRotation } from './utils'
 import { useStore } from './store'
 
 // adjustable values
-const DELAY_BETWEEN_PICKS = 10
+const DELAY_BETWEEN_PICKS = 1010
 const DELAY_AFTER_ALL_PICKS = 1150
 const DIAL_ROTATION_SPEED = 2.5
 
