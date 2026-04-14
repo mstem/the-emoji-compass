@@ -24,7 +24,7 @@ body {
   /* background:
     url('../img/aurora.svg') center/cover fixed no-repeat; */
   background:
-    url('../img/bgoverlay.png') 0/32px repeat,
+    url('../img/bgoverlay.png') 0/32px fixed repeat,
     url('../img/aurora.svg') center/cover fixed no-repeat;
   /* background:
     url('../img/aurora1.png') center/cover fixed no-repeat; */
