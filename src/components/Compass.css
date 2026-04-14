@@ -1,7 +1,7 @@
 .compass-container {
   position: absolute;
-  height: min(96vmin, calc(100vh - 90px - 2rem), calc(100vw - 2rem));
-  width: min(96vmin, calc(100vh - 90px - 2rem), calc(100vw - 2rem));
+  height: var(--compass-size);
+  width: var(--compass-size);
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);

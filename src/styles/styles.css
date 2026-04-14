@@ -1,3 +1,7 @@
+:root {
+  --compass-size: min(96vmin, calc(100vh - 90px - 2rem), calc(100vw - 2rem));
+}
+
 html,
 body {
   /* Prevent overscroll on iOS / mobile */
