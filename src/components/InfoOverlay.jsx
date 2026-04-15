@@ -66,7 +66,7 @@ export default function InfoOverlay ({ handler }) {
               <a href="https://biffud.com" target="_blank" rel="noopener noreferrer">Bad Idea Factory</a>
               , a creative collective that builds technology to make people 🤔. The app is inspired
               by, but has no official endorsement or connection to, His Dark Materials, the series
-              by Philip Pullman. You can and should{' '}
+              by Sir Philip Pullman. You can and should{' '}
               <a href="https://www.indiebound.org/book/9780440238133" target="_blank" rel="noopener noreferrer">
                 purchase his works
               </a>.
