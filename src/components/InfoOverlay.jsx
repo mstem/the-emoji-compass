@@ -99,15 +99,12 @@ export default function InfoOverlay ({ handler }) {
                 <a href="https://zustand.docs.pmnd.rs/" target="_blank" rel="noopener noreferrer">Zustand</a>
               </li>
               <li>
-                <a href="https://gsap.com/" target="_blank" rel="noopener noreferrer">GSAP</a>
-              </li>
-              <li>
-                <a href="https://vitejs.dev/" target="_blank" rel="noopener noreferrer">Vite</a>
-              </li>
-              <li>
                 <a href="https://reactcommunity.org/react-transition-group/" target="_blank" rel="noopener noreferrer">
                   React Transition Group
                 </a>
+              </li>
+              <li>
+                <a href="https://vitejs.dev/" target="_blank" rel="noopener noreferrer">Vite</a>
               </li>
               <li>
                 The{' '}

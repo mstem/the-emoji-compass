@@ -1,5 +1,5 @@
 :root {
-  --compass-size: min(96vmin, calc(100vh - 90px - 2rem), calc(100vw - 2rem));
+  --compass-size: min(81.6vmin, calc((100vh - 90px - 2rem) * 0.85), calc((100vw - 2rem) * 0.85));
 }
 
 html,
