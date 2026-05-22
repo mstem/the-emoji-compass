@@ -9,7 +9,7 @@ npm install
 npm start
 ```
 
-View this online at https://badideafactory.github.io/the-emoji-compass/
+View this online at [https://badideafactory.github.io/the-emoji-compass/](https://mstem.github.io/the-emoji-compass/)
 
 ## What is this? tl:dr;
 
