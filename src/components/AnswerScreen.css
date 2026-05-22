@@ -20,6 +20,7 @@
   position: relative;
   width: 80%;
   margin: 0 auto;
+  overflow: hidden;
 }
 
 .answer-arc-container + .answer-arc-container{
@@ -49,6 +50,8 @@
   position: absolute;
   top: 37%;
   width: 100%;
+  padding: 0 6%;
+  box-sizing: border-box;
 
   font-size: min(16vmin, 12vw);
   line-height: 1;
