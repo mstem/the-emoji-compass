@@ -18,7 +18,8 @@
 
 .answer-arc-container {
   position: relative;
-  width: 100%;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .answer-arc-container + .answer-arc-container{
