@@ -11,6 +11,7 @@ gsap.registerPlugin(Draggable)
 export default function CompassNeedle ({ id, type }) {
   const symbols = useStore((s) => s.symbols)
   const activeNeedle = useStore((s) => s.activeNeedle)
+  const requestEmojis = useStore((s) => s.requestEmojis)
   const addRequestEmoji = useStore((s) => s.addRequestEmoji)
   const updateNeedlePosition = useStore((s) => s.updateNeedlePosition)
   const setActiveNeedle = useStore((s) => s.setActiveNeedle)
@@ -20,10 +21,12 @@ export default function CompassNeedle ({ id, type }) {
 
   // Keep latest store actions in refs so the Draggable closure always has current values
   const symbolsRef = useRef(symbols)
+  const requestEmojisRef = useRef(requestEmojis)
   const addRequestEmojiRef = useRef(addRequestEmoji)
   const updateNeedlePositionRef = useRef(updateNeedlePosition)
   const setActiveNeedleRef = useRef(setActiveNeedle)
   useEffect(() => { symbolsRef.current = symbols }, [symbols])
+  useEffect(() => { requestEmojisRef.current = requestEmojis }, [requestEmojis])
   useEffect(() => { addRequestEmojiRef.current = addRequestEmoji }, [addRequestEmoji])
   useEffect(() => { updateNeedlePositionRef.current = updateNeedlePosition }, [updateNeedlePosition])
   useEffect(() => { setActiveNeedleRef.current = setActiveNeedle }, [setActiveNeedle])
@@ -69,8 +72,22 @@ export default function CompassNeedle ({ id, type }) {
       throwProps: true,
       snap: {
         rotation: (value) => {
-          const increment = 360 / symbolsRef.current.length
-          return Math.round(value / increment) * increment
+          const syms = symbolsRef.current
+          const increment = 360 / syms.length
+          const snappedStep = Math.round(value / increment)
+          const snappedIndex = ((snappedStep % syms.length) + syms.length) % syms.length
+          const selected = requestEmojisRef.current.map((s) => s.emoji)
+          if (selected.includes(syms[snappedIndex].emoji)) {
+            for (let offset = 1; offset < syms.length; offset++) {
+              const plusStep = snappedStep + offset
+              const plusIndex = ((plusStep % syms.length) + syms.length) % syms.length
+              if (!selected.includes(syms[plusIndex].emoji)) return plusStep * increment
+              const minusStep = snappedStep - offset
+              const minusIndex = ((minusStep % syms.length) + syms.length) % syms.length
+              if (!selected.includes(syms[minusIndex].emoji)) return minusStep * increment
+            }
+          }
+          return snappedStep * increment
         },
       },
       onDragStart: () => {

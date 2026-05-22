@@ -8,6 +8,7 @@ import './MainScreen.css'
 
 export default function MainScreen () {
   const requestEmojis = useStore((s) => s.requestEmojis)
+  const activeNeedle = useStore((s) => s.activeNeedle)
 
   useEffect(() => {
     init()
@@ -16,11 +17,13 @@ export default function MainScreen () {
   return (
     <div className="container container-main-screen">
       <Compass />
-      <div className="emoji-requested">
-        {requestEmojis.map((symbol, i) => (
-          <Emoji symbol={symbol} key={i} />
-        ))}
-      </div>
+      {activeNeedle < 4 && (
+        <div className="emoji-requested">
+          {requestEmojis.map((symbol, i) => (
+            <Emoji symbol={symbol} key={i} />
+          ))}
+        </div>
+      )}
       <MainTextDisplay />
     </div>
   )

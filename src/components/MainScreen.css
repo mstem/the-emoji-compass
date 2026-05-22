@@ -1,7 +1,7 @@
 .emoji-requested {
   text-align: center;
-  font-size: 48px;
-  height: 48px;
+  font-size: 12vmin;
+  height: 12vmin;
   /* margin-top: 2rem; */
   position: absolute;
   width: 100%;
@@ -11,8 +11,8 @@
 @media (max-height: 600px) {
   .emoji-requested {
     margin-top: 1rem;
-    font-size: 36px;
-    height: 36px;
+    font-size: 10vmin;
+    height: 10vmin;
   }
 }
 

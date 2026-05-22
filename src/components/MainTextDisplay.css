@@ -55,8 +55,8 @@
 
 .emoji-picking span,
 .emoji-description > span {
-  font-size: 24vmin;
-  line-height: 24vmin;
+  font-size: 12vmin;
+  line-height: 12vmin;
 }
 
 .emoji-picking > span > img.emoji,
