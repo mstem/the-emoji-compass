@@ -70,7 +70,7 @@ export default function CompassNeedle ({ id, type }) {
       type: 'rotation',
       sticky: true,
       throwProps: true,
-      snap: {
+      liveSnap: {
         rotation: (value) => {
           const syms = symbolsRef.current
           const increment = 360 / syms.length
