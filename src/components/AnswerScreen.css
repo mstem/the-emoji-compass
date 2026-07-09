@@ -48,13 +48,23 @@
   display: flex;
   justify-content: center;
 
+  /* Align exactly with the arc's white band: the SVG fills the container's
+     content box, which sits inside the 5% side padding on .answer-arc-container.
+     The 2% inner padding lands the outer emojis on the centroids of the arc's
+     three clickable zones (~18% / 50% / 82% of the band) so they stay clear of
+     the slanted golden borders. */
   position: absolute;
   top: 37%;
-  width: 100%;
-  padding: 0 6%;
+  left: 5%;
+  right: 5%;
+  padding: 0 2%;
   box-sizing: border-box;
 
-  font-size: min(16vmin, 12vw);
+  /* The arc band width is capped at ~96vmin (see .container-answer-screen), so
+     size the emoji off vmin too — this keeps a constant emoji-to-band ratio in
+     landscape, where an all-vw size would balloon past the slanted borders. The
+     11vw arm only binds in portrait, where vmin == vw. */
+  font-size: min(10.5vmin, 11vw);
   line-height: 1;
 
   /* disable events so svg handlers work */
@@ -72,9 +82,15 @@
   margin-right: 0.5em;
 }
 
-/* Raise the middle one */
+/* The band curves like a rainbow: raise the middle most, nudge the outer
+   two up so they follow the band centerline and stay off the bottom border. */
 .answer-emojis > span:nth-child(2) {
   margin-top: -6%;
+}
+
+.answer-emojis > span:first-child,
+.answer-emojis > span:last-child {
+  margin-top: -2.5%;
 }
 
 .emoji-table {
