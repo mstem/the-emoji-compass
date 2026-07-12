@@ -1,5 +1,20 @@
 :root {
-  --compass-size: min(81.6vmin, calc((100vh - 90px - 2rem) * 0.85), calc((100vw - 2rem) * 0.85));
+  /* Visible viewport height; dvh tracks mobile browser chrome where supported */
+  --viewport-height: 100vh;
+  /* Vertical room reserved below the compass for the instruction/answer text,
+     so the whole first screen fits on-screen without scrolling */
+  --text-zone: min(45vh, 340px);
+  --compass-size: min(81.6vmin, calc((var(--viewport-height) - 90px - 2rem) * 0.85), calc((100vw - 2rem) * 0.85));
+  /* Center the compass in the space above the text zone and nav buttons,
+     but never closer than 1rem to the top edge */
+  --compass-top: max(1rem, calc((var(--viewport-height) - 90px - var(--text-zone) - var(--compass-size)) / 2));
+}
+
+@supports (height: 100dvh) {
+  :root {
+    --viewport-height: 100dvh;
+    --text-zone: min(45dvh, 340px);
+  }
 }
 
 html,
@@ -7,7 +22,7 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
-  min-height: 100vh;
+  min-height: var(--viewport-height);
 }
 
 body {
@@ -35,7 +50,7 @@ body {
   /* Positioning and layout */
   position: relative;
   width: 100%;
-  min-height: calc(100vh - 90px);
+  min-height: calc(var(--viewport-height) - 90px);
   height: auto;
   align-items: center;
 

@@ -3,6 +3,6 @@
   height: var(--compass-size);
   width: var(--compass-size);
   left: 50%;
-  top: calc((100vh - 90px - var(--compass-size)) / 2);
+  top: var(--compass-top);
   transform: translateX(-50%);
 }

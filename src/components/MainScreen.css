@@ -5,7 +5,8 @@
   /* margin-top: 2rem; */
   position: absolute;
   width: 100%;
-  top: 106vmin;
+  /* Overlay the picked emojis on the open lower face of the dial */
+  top: calc(var(--compass-top) + var(--compass-size) * 0.7);
 }
 
 @media (max-height: 600px) {
