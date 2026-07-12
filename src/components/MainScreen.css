@@ -5,8 +5,15 @@
   /* margin-top: 2rem; */
   position: absolute;
   width: 100%;
-  /* Overlay the picked emojis on the open lower face of the dial */
-  top: calc(var(--compass-top) + var(--compass-size) * 0.7);
+  /* Sit just below the compass, above the description text */
+  top: calc(var(--compass-top) + var(--compass-size) + 0.5rem);
+}
+
+/* Once symbols have been picked, nudge the text block down to make room for
+   the picked-emoji row below the compass. The text shown in these states
+   (needle description / next-needle prompt) is short, so it still fits. */
+.container-main-screen:has(.emoji-requested > span) .text-container {
+  margin-top: calc(var(--compass-top) + var(--compass-size) + 12vmin + 1rem);
 }
 
 @media (max-height: 600px) {
