@@ -3,17 +3,26 @@
   --viewport-height: 100vh;
   /* Vertical room reserved below the compass for the instruction/answer text,
      so the whole first screen fits on-screen without scrolling */
-  --text-zone: min(45vh, 340px);
+  --text-zone: min(48vh, 396px);
+  /* Gap between the compass bottom and the instruction text */
+  --text-gap: 3rem;
   --compass-size: min(81.6vmin, calc((var(--viewport-height) - 90px - 2rem) * 0.85), calc((100vw - 2rem) * 0.85));
   /* Center the compass in the space above the text zone and nav buttons,
      but never closer than 1rem to the top edge */
   --compass-top: max(1rem, calc((var(--viewport-height) - 90px - var(--text-zone) - var(--compass-size)) / 2));
 }
 
+/* Narrow screens have no room to spare below the compass */
+@media (max-width: 374px) {
+  :root {
+    --text-gap: 1rem;
+  }
+}
+
 @supports (height: 100dvh) {
   :root {
     --viewport-height: 100dvh;
-    --text-zone: min(45dvh, 340px);
+    --text-zone: min(48dvh, 396px);
   }
 }
 

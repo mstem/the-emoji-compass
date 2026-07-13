@@ -1,6 +1,6 @@
 .text-container {
   position: relative;
-  margin: calc(var(--compass-top) + var(--compass-size) + 1rem) auto 2rem;
+  margin: calc(var(--compass-top) + var(--compass-size) + var(--text-gap)) auto 2rem;
   width: calc(var(--compass-size) * 0.8);
   display: flex;
   flex-direction: column;
