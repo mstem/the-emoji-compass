@@ -70,7 +70,8 @@ body {
   letter-spacing: 0.02em;
   color: white;
   text-align: center;
-  text-shadow: 0 0 6px rgba(0, 0, 0, 1);
+  /* Soft glow plus a tight dark drop for contrast against pale backgrounds */
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85), 0 0 6px rgba(0, 0, 0, 1);
 }
 
 /* Hide Cordova thing? */

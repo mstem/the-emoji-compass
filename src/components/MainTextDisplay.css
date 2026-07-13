@@ -59,6 +59,14 @@
   margin: 0.25em 0;
 }
 
+/* Keep the whole block short enough to sit on the dark rooftops at the
+   bottom of the background, not the pale sky above them. */
+@media (orientation: portrait) {
+  .instruction-text {
+    font-size: 1.35em;
+  }
+}
+
 .instruction-text-howto {
   font-size: 1.1em;
 }
