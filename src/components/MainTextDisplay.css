@@ -7,9 +7,22 @@
   padding-bottom: 1rem;
 }
 
+/* On portrait screens, anchor the text just above the nav buttons so it
+   reads against the dark rooftops rather than the bright sky, and can
+   never push the nav below the fold no matter how the text wraps. */
+@media (orientation: portrait) {
+  .text-container {
+    position: absolute;
+    bottom: 2rem;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+  }
+}
+
 @media (max-width: 374px) {
   .text-container {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     margin-bottom: 1rem;
   }
 }

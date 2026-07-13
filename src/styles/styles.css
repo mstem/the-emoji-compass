@@ -3,7 +3,7 @@
   --viewport-height: 100vh;
   /* Vertical room reserved below the compass for the instruction/answer text,
      so the whole first screen fits on-screen without scrolling */
-  --text-zone: min(48vh, 396px);
+  --text-zone: min(48vh, 340px);
   /* Gap between the compass bottom and the instruction text */
   --text-gap: 3rem;
   --compass-size: min(81.6vmin, calc((var(--viewport-height) - 90px - 2rem) * 0.85), calc((100vw - 2rem) * 0.85));
@@ -22,7 +22,7 @@
 @supports (height: 100dvh) {
   :root {
     --viewport-height: 100dvh;
-    --text-zone: min(48dvh, 396px);
+    --text-zone: min(48dvh, 340px);
   }
 }
 
