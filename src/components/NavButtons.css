@@ -11,4 +11,5 @@
 
 .nav-buttons button {
   margin: 0 20px;
+  transform: translateY(-24px);
 }

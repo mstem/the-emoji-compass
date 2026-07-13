@@ -5,6 +5,9 @@
   flex-grow: 1;
   align-items: center;
   margin-top: 2rem;
+  /* .container's min-height fills the viewport above the nav by itself, so
+     leave room for our own top margin or the page scrolls past the fold */
+  min-height: calc(var(--viewport-height) - 90px - 2rem);
   width: min(96vmin, calc(100vw - 2rem));
   max-width: min(96vmin, calc(100vw - 2rem));
   align-self: center;
