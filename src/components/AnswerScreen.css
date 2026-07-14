@@ -44,6 +44,10 @@
   align-items: center;
   justify-content: center;
   margin: 0 1em;
+  /* The nav buttons translate 24px up into this container (NavButtons.css),
+     so keep the reading's last line clear of them when the arcs leave only
+     a text-sized sliver of space, as they do on desktop. */
+  margin-bottom: 3rem;
   font-weight: normal;
 }
 
@@ -136,5 +140,22 @@
 
   .emoji-table-symbol {
     font-size: 6vmin;
+  }
+}
+
+/* In landscape vmin tracks the viewport height, so the 96vmin cap up top
+   lets the arcs swallow the whole fold and shove the reading into the nav
+   buttons. Cap lower so arcs + reading + nav all fit above the fold.
+   (Last in the file so these win over the base rules above.) */
+@media (orientation: landscape) {
+  .container-answer-screen {
+    width: min(80vmin, calc(100vw - 2rem));
+    max-width: min(80vmin, calc(100vw - 2rem));
+  }
+
+  /* Keep the emoji-to-band ratio from the base sizing: 10.5vmin scaled
+     by the 80/96 band cap above. */
+  .answer-emojis {
+    font-size: 8.75vmin;
   }
 }
