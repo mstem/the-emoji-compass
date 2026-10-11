@@ -3,7 +3,7 @@
    with the extra class outranking the widget's injected stylesheet. */
 .ring-bar {
   margin-top: 40vh;
-  padding: 0 1rem 3rem;
+  padding: 0;
   text-align: center;
 }
 
