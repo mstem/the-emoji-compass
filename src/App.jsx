@@ -5,6 +5,7 @@ import NavButtons from './components/NavButtons'
 import MainScreen from './components/MainScreen'
 import AnswerScreen from './components/AnswerScreen'
 import InfoOverlay from './components/InfoOverlay'
+import RingBar from './components/RingBar'
 import './App.css'
 
 // If a viewer tabs away and returns after this long, skip to the answer screen.
@@ -50,6 +51,7 @@ export default function App () {
       {screen}
       {infoVisible && <InfoOverlay handler={() => setInfoVisible(false)} />}
       <NavButtons route={route} showInfoOverlay={() => setInfoVisible(true)} />
+      <RingBar />
     </main>
   )
 }

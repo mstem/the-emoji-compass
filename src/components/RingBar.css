@@ -1,0 +1,14 @@
+/* Well below the compass so it never competes with it. The widget brings its
+   own half-clear background and colours; only the compass's type is set here,
+   with the extra class outranking the widget's injected stylesheet. */
+.ring-bar {
+  margin-top: 40vh;
+  padding: 0;
+  text-align: center;
+}
+
+.ring-bar #webring-widget {
+  font-family: 'Gentium Book Basic', serif;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+}
